@@ -33,4 +33,4 @@ aptGetPackages args =
       arg /= "install"
   ]
   where
-    dropTarget = Shell.dropFlagArg ["t", "target-release"]
+    dropTarget = Shell.dropFlagArg ["S", "snapshot", "t", "target-release"]

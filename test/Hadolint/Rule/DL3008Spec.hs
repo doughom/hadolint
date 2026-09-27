@@ -61,3 +61,12 @@ spec = do
        in do
             ruleCatchesNot "DL3008" $ Text.unlines dockerFile
             onBuildRuleCatchesNot "DL3008" $ Text.unlines dockerFile
+    it "apt-get tolerate snapshot" $
+      let dockerFile =
+            [ "RUN apt-get install -yU --no-install-recommends --snapshot 20260901T000000Z \\",
+              "ca-certificates=20250419 \\",
+              "curl=0.9.2-10"
+            ]
+       in do
+            ruleCatchesNot "DL3008" $ Text.unlines dockerFile
+            onBuildRuleCatchesNot "DL3008" $ Text.unlines dockerFile
